@@ -2,7 +2,7 @@
 
 function get_category(){
     include './config.php';
-    $sql = "SELECT * FROM category";
+    $sql = "SELECT * FROM categories";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 

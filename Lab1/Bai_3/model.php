@@ -2,7 +2,7 @@
 
 function get_user($email){
     include './config.php';
-    $sql = "SELECT * FROM account WHERE email = ?";
+    $sql = "SELECT * FROM accounts WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
