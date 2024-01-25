@@ -17,7 +17,7 @@
         public function __toString(){
 
             return sprintf('
-                <div class="form-group mb-5">
+                <div class="form-group">
                     <lable>%s</lable>
                     <input type="%s" name="%s">
                 </div>',
