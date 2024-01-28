@@ -1,25 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
 <?php
-    //lab 4 bài 3
-    // require_once __DIR__."/vendor/autoload.php";
-    // use App\core\Route as Router;
-
-    // $router = new Router();
-    // $router->register('/', function(){
-    //         echo "Home";
-    //     }
-    // );
-
-    // $router->register('/invoices', function(){
-    //     echo "Invoices";
-    // }
-    // );
-
-    // $router->register('/invoices/create', function(){
-    //     echo "Create Invoices";
-    // }
-    // );
-
-    //lab 4 bài 4
+    session_start();
     require_once __DIR__."/vendor/autoload.php";
     use App\core\Route as Router;
     use App\Home;
@@ -27,9 +16,14 @@
     
     $router = new Router();
 
-    $router->register('/', [App\Home::class, 'index'])
-            ->register('/invoices', [App\Invoices::class,'index'])
-            ->register('/invoices/create', [App\Invoices::class, 'create']);
+    $router->get('/', [App\Home::class, 'index'])
+            ->post('/upload', [App\Home::class,'upload'])
+            ->get('/login', [App\Login::class, 'login'])
+            ->post('/loginUser', [App\Login::class, 'loginUser'])
+            ->get('/login', [App\Login::class, 'login'])
+            ->get('/logout', [App\Login::class, 'logout']);
 
-    echo $router->resolve($_SERVER['REQUEST_URI']);
+    echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
 ?>
+</body>
+</html>

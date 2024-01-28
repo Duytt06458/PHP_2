@@ -3,19 +3,41 @@
     use mysqli;
     class Database
     {
-        public function __construct()
-        {
-            $servername = 'localhost';
-            $username = 'root';
-            $password = '00000';
-            $database = 'freshop';
+        // public function __construct()
+        // {
+        //     $servername = 'localhost';
+        //     $username = 'root';
+        //     $password = '00000';
+        //     $database = 'freshop';
 
-            $conn = new mysqli($servername, $username, $password, $database);
+        //     $conn = new mysqli($servername, $username, $password, $database);
 
-            if(!$conn){
-                die("Connection failed: ".$conn->connect_error());
-            }else{
-                echo "Connection Successfully";
+        //     if(!$conn){
+        //         die("Connection failed: ".$conn->connect_error());
+        //     }else{
+        //         echo "Connection Successfully";
+        //     }
+        // }
+
+        public function connect(){
+            try{
+                $servername = 'localhost';
+                $username = 'root';
+                $password = '00000';
+                $database = 'freshop';
+
+                $conn = new mysqli($servername, $username, $password, $database);
+
+                if(!$conn){
+                    die("Connection failed: ".$conn->connect_error());
+                }else{
+                    echo "Connection Successfully";
+                }
+
+                return $conn;
+            }catch(\Exception $e){
+                print "Exception".$e->getMessage();
+                die();
             }
         }
 
